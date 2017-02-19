@@ -7,21 +7,25 @@
     		<tr>
     			<th>#</th>
     			<th>Name</th>
-    			<th>Due Date</th>
-    			<th>Actions</th>
+    			<th>Description</th>
+                <th>Due Date</th>
+                <th>Actions</th>
     		</tr>
     	</thead>
     	<tbody>
+        {% for todo in todos %}
     		<tr>
-    			<th scope="row">1</th>
-    			<td>Name</td>
-    			<td>Due Date</td>
+    			<th scope="row">{{ todo.id }}</th>
+    			<td>{{todo.name}}</td>
+                <td>{{todo.description}}</td>
+    			<td>{{todo.duedate|date('F j,Y,g:i a')}}</td>
     			<td>
-    				<a href="/todo/details/1" class="btn btn-success">View</a>
-					<a href="/todo/edit/1" class="btn btn-default">Edit</a>
-					<a href="/todo/delete/1" class="btn btn-danger">View</a>
+    				<a href="/todos/details/{{todo.id}}" class="btn btn-success">View</a>
+					<a href="/todos/edit/{{todo.id}}" class="btn btn-default">Edit</a>
+					<a href="/todos/delete/{{todo.id}}" class="btn btn-danger">Delete</a>
     			</td>
     		</tr>
+        {% endfor %}    
     	</tbody>
     </table>
 {% endblock %}
